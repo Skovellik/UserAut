@@ -1,0 +1,34 @@
+﻿<Window x:Class="UserAut.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Пользователи" Height="500" Width="900"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock x:Name="UserInfoText" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Button Content="Обновить" Margin="20,0,0,0" Padding="10,4"
+                    Click="RefreshButton_Click"/>
+            <Button Content="Выйти" Margin="10,0,0,0" Padding="10,4"
+                    Click="LogoutButton_Click"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="1" x:Name="UsersGrid"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  CanUserAddRows="False" HeadersVisibility="Column">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"        Binding="{Binding id}"       Width="50"/>
+                <DataGridTextColumn Header="ФИО"       Binding="{Binding full_name}" Width="200"/>
+                <DataGridTextColumn Header="Телефон"   Binding="{Binding phone}"    Width="130"/>
+                <DataGridTextColumn Header="Email"     Binding="{Binding email}"    Width="180"/>
+                <DataGridTextColumn Header="Логин"     Binding="{Binding login}"    Width="110"/>
+                <DataGridTextColumn Header="Пароль"    Binding="{Binding pass}"     Width="80"/>
+                <DataGridCheckBoxColumn Header="Админ" Binding="{Binding is_admin}"  Width="70"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
